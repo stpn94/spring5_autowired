@@ -1,5 +1,6 @@
 package spring5_autowired.config;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -34,7 +35,14 @@ public class AppCtx {
 		return pwdSvc;
 	}
 	
+//  @Qualifier TEST를 위해 주석처리함.
+//	@Bean
+//	public MemberPrinter memberPrinter() {
+//		return new MemberPrinter();
+//	}
+	
 	@Bean
+	@Qualifier
 	public MemberPrinter memberPrinter() {
 		return new MemberPrinter();
 	}
