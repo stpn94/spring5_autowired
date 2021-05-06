@@ -13,7 +13,7 @@ import spring5_autowired.spring.VersionPrinter;
 
 @Configuration
 public class AppCtx {
-
+// Unsatisfied dependency erorr가 뜨면 @Bean생성 했는지 확인해라
 	@Bean
 	public MemberDao memberDao() {
 		return new MemberDao();
@@ -21,7 +21,9 @@ public class AppCtx {
 	
 	@Bean
 	public MemberRegisterService memberRegSvc() {
-		return new MemberRegisterService(memberDao());
+//		return new MemberRegisterService(memberDao());
+		//memberDao()를 빼도됨 그러면▼▼▼이렇게 됨
+		return new MemberRegisterService();
 	}
 	
 	@Bean
@@ -45,8 +47,9 @@ public class AppCtx {
 	@Bean
 	public MemberInfoPrinter infoPrinter() {
 		MemberInfoPrinter infoPrinter = new MemberInfoPrinter();
-		infoPrinter.setMemberDao(memberDao());
-		infoPrinter.setPrinter(memberPrinter());
+		//MemberInfoPrinter에 @Autowired를 붙여 놓아서 자동 주입된다.
+//		infoPrinter.setMemberDao(memberDao());
+//		infoPrinter.setPrinter(memberPrinter());
 		return infoPrinter;
 	}
 	

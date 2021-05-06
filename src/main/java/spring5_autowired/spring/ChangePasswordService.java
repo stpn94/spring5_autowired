@@ -9,6 +9,11 @@ public class ChangePasswordService {
 	@Autowired
 	private MemberDao memberDao;
 	
+	//@Autowired 있으니까 ▼▼▼▼주입 안해도됨
+//	public void setMemberDao(MemberDao memberDao) {
+//		this.memberDao = memberDao;
+//	}
+	
 	//암호 변경
 	public void changePassword(String email, String oldPwd, String newPwd) {
 		Member member = memberDao.selectByEmail(email);
@@ -21,8 +26,5 @@ public class ChangePasswordService {
 		memberDao.update(member);
 	}
 
-	public void setMemberDao(MemberDao memberDao) {
-		this.memberDao = memberDao;
-	}
 
 }

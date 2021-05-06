@@ -1,10 +1,17 @@
 package spring5_autowired.spring;
 
 import java.time.LocalDateTime;
+
+import org.springframework.beans.factory.annotation.Autowired;
 //멤버 등록 서비스
 public class MemberRegisterService {
+	@Autowired
 	private MemberDao memberDao;
 	
+	//기본생성자 추가
+	public MemberRegisterService() {
+	}
+
 	//DI(의존 주입)를 통한 의존 처리(직접 객체를 생성하지 않음)
 	public MemberRegisterService(MemberDao memberDao) {
 		this.memberDao = memberDao;
